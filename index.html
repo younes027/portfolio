@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinani Younes — Portfolio BTS SIO SISR</title>
+    <!-- Style Apple / épuré / moderne -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- SF Pro / Inter comme Apple -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons (version gratuite) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* RESET & GLOBAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f5f7; /* fond gris clair Apple */
+            color: #1d1d1f;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            padding: 2rem 1.5rem;
+        }
+
+        /* CONTENEUR PRINCIPAL À L'APPLE (max-width élégant) */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 2.5rem;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08), 0 8px 20px rgba(0,0,0,0.02);
+            padding: 2.5rem 2.8rem;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+
+        /* TYPO GRANDE ET AÉRÉE */
+        h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            margin-bottom: 0.25rem;
+            color: #000;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin: 2.5rem 0 1.25rem 0;
+            color: #1d1d1f;
+            border-bottom: 2px solid #e6e6e8;
+            padding-bottom: 0.4rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.8rem;
+            color: #1d1d1f;
+        }
+
+        .subhead {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #6e6e73;
+            margin-bottom: 1.8rem;
+        }
+
+        /* PHOTO / AVATAR AVEC EMPLACEMENT */
+        .photo-profile {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 1.8rem 0 2.2rem 0;
+        }
+
+        .photo-placeholder {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #e8e8ed, #d1d1d6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8e8e93;
+            font-size: 3.5rem;
+            border: 3px solid white;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            transition: 0.2s ease;
+        }
+
+        .photo-placeholder i {
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        /* pour quand la photo réelle sera ajoutée */
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* BADGES/STATUT */
+        .badge {
+            background-color: #f5f5f7;
+            border-radius: 40px;
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1d1d1f;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 1px solid #e6e6e8;
+            box-shadow: inset 0 1px 2px white;
+        }
+
+        .badge i {
+            color: #0066cc; /* bleu Apple */
+        }
+
+        /* GRILLE POUR COMPÉTENCES / PROJETS (CARTES APPLE) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0 0.5rem 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1.8rem;
+            padding: 1.8rem 1.6rem;
+            border: 1px solid #f0f0f2;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.02);
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 28px -10px rgba(0,0,0,0.1);
+            border-color: #d0d0d5;
+        }
+
+        .card i {
+            font-size: 2.2rem;
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #3a3a3c;
+            font-size: 1rem;
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card li {
+            margin: 0.8rem 0;
+            color: #515154;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .card li i {
+            font-size: 0.9rem;
+            color: #0066cc;
+            margin: 0;
+        }
+
+        /* LISTE DE COMPÉTENCES (tags) */
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin: 1.2rem 0 0.4rem 0;
+        }
+
+        .skill-tag {
+            background: #f5f5f7;
+            border-radius: 30px;
+            padding: 0.3rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1d1d1f;
+            border: 0.5px solid #e6e6e8;
+        }
+
+        /* TIMELINE APPLE (parcours) */
+        .timeline {
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.8rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eeeef0;
+        }
+
+        .timeline-date {
+            min-width: 110px;
+            font-weight: 600;
+            color: #0066cc;
+            font-size: 1.1rem;
+        }
+
+        .timeline-content {
+            font-weight: 400;
+            color: #2c2c2e;
+        }
+
+        .timeline-content strong {
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* CONTACT & BOUTONS APPLE */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 2.5rem 0 1rem 0;
+            align-items: center;
+        }
+
+        .apple-button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            transition: 0.15s ease;
+            border: 1px solid #0066cc;
+        }
+
+        .apple-button i {
+            color: white;
+        }
+
+        .apple-button:hover {
+            background: #0055b3;
+            cursor: pointer;
+        }
+
+        .apple-button-outline {
+            background: transparent;
+            color: #0066cc;
+            border: 1px solid #d0d0d5;
+            box-shadow: none;
+        }
+
+        .apple-button-outline i {
+            color: #0066cc;
+        }
+
+        .apple-button-outline:hover {
+            background: #f5f5f7;
+            border-color: #0066cc;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.8rem;
+            margin: 1.8rem 0;
+        }
+
+        .social-icon {
+            color: #8e8e93;
+            font-size: 1.8rem;
+            transition: 0.2s;
+        }
+
+        .social-icon:hover {
+            color: #0066cc;
+            transform: scale(1.05);
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 4rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #f0f0f2;
+            font-size: 0.95rem;
+            color: #8e8e93;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 680px) {
+            body { padding: 1rem; }
+            .container { padding: 1.8rem; }
+            h1 { font-size: 2.4rem; }
+            .photo-profile { flex-direction: column; align-items: flex-start; }
+            .timeline-item { flex-direction: column; gap: 0.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- EN-TÊTE AVEC EMPLACEMENT PHOTO -->
+        <div class="photo-profile">
+            <div class="photo-placeholder" id="photoContainer">
+                <!-- Ici, tu pourras ajouter ta photo en remplaçant l'icône par une balise <img> -->
+                <i class="fas fa-user-circle"></i>
+                <!-- Exemple quand tu auras la photo : <img src="lien_vers_ta_photo.jpg" alt="Sinani Younes"> -->
+            </div>
+            <div>
+                <h1>Sinani Younes</h1>
+                <div class="subhead">
+                    <i class="fas fa-shield-halved" style="margin-right: 8px; color: #0066cc;"></i>
+                    Étudiant BTS SIO — Option SISR
+                </div>
+                <div class="badge">
+                    <i class="fas fa-circle" style="font-size: 0.6rem; color: #30b0c0;"></i> 
+                    En recherche d'alternance
+                </div>
+            </div>
+        </div>
+
+        <!-- PETITE BIO STYLE APPLE -->
+        <p style="font-size: 1.2rem; max-width: 700px; margin: 2rem 0 1rem 0; color: #3a3a3c;">
+            Passionné par l’infrastructure, l’administration système et la cybersécurité. 
+            Je prépare un BTS SIO SISR pour devenir administrateur réseau.
+        </p>
+
+        <!-- SECTION COMPÉTENCES (reprise de ton site) -->
+        <h2><i class="fas fa-gear" style="font-size: 1.8rem; margin-right: 12px; color: #0066cc;"></i> Compétences techniques</h2>
+        
+        <div class="grid">
+            <!-- SYSTÈMES -->
+            <div class="card">
+                <i class="fas fa-server"></i>
+                <h3>🖥️ Systèmes</h3>
+                <ul>
+                    <li><i class="fas fa-angle-right"></i> Windows Server (AD, GPO)</li>
+                    <li><i class="fas fa-angle-right"></i> Linux (Debian, Ubuntu)</li>
+                    <li><i class="fas fa-angle-right"></i> Scripting Bash / PowerShell</li>
+                    <li><i class="fas fa-angle-right"></i> Virtualisation (VMware, Proxmox)</li>
+                </ul>
+            </div>
+
+            <!-- RÉSEAUX -->
+            <div class="card">
+                <i class="fas fa-network-wired"></i>
+                <h3>🌐 Réseaux</h3>
+                <ul>
+                    <li><i class="fas fa-angle-right"></i> Cisco (VLAN, routage)</li>
+                    <li><i class="fas fa-angle-right"></i> Adressage IP / DHCP / DNS</li>
+                    <li><i class="fas fa-angle-right"></i> Supervision (Zabbix, Cacti)</li>
+                    <li><i class="fas fa-angle-right"></i> 802.1Q, STP, OSPF (bases)</li>
+                </ul>
+            </div>
+
+            <!-- SÉCURITÉ & CLOUD -->
+            <div class="card">
+                <i class="fas fa-lock"></i>
+                <h3>🔒 Sécurité & Cloud</h3>
+                <ul>
+                    <li><i class="fas fa-angle-right"></i> Firewall (pfSense, iptables)</li>
+                    <li><i class="fas fa-angle-right"></i> VPN (OpenVPN, Wireguard)</li>
+                    <li><i class="fas fa-angle-right"></i> Sauvegardes (Veeam)</li>
+                    <li><i class="fas fa-angle-right"></i> Azure / notions cloud</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROJETS RÉCENTS (repris et améliorés) -->
+        <h2><i class="fas fa-wrench" style="margin-right: 10px; color: #0066cc;"></i> Projets récents</h2>
+
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-shield-halved"></i>
+                <h3>Réseau sécurisé pfSense</h3>
+                <p>Mise en place d'un firewall pfSense avec segmentation VLAN, règle de filtrage et VPN site-à-site. Supervision via pfSense logs.</p>
+                <div class="skills-tags">
+                    <span class="skill-tag">pfSense</span>
+                    <span class="skill-tag">VLAN</span>
+                    <span class="skill-tag">OpenVPN</span>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-database"></i>
+                <h3>Serveur Web & Base de données</h3>
+                <p>Déploiement d’un serveur LAMP (Linux, Apache, MySQL, PHP) avec sauvegardes automatisées et durcissement SSH.</p>
+                <div class="skills-tags">
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Apache</span>
+                    <span class="skill-tag">MySQL</span>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-diagram-project"></i>
+                <h3>Active Directory & GPO</h3>
+                <p>Installation d’un domaine Windows Server, gestion des utilisateurs, stratégies de groupe et partage de fichiers sécurisé.</p>
+                <div class="skills-tags">
+                    <span class="skill-tag">AD DS</span>
+                    <span class="skill-tag">GPO</span>
+                    <span class="skill-tag">DNS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARCOURS (TIMELINE) -->
+        <h2><i class="fas fa-timeline" style="margin-right: 10px; color: #0066cc;"></i> Parcours</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2024-2026</div>
+                <div class="timeline-content"><strong>BTS SIO SISR</strong> — Lycée polyvalent, option infrastructure</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Été 2025</div>
+                <div class="timeline-content"><strong>Stage technicien support</strong> — Maintenance réseau et assistance utilisateurs</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2023-2024</div>
+                <div class="timeline-content"><strong>Bac STI2D</strong> — Mention bien, spécialité SIN</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Certifications</div>
+                <div class="timeline-content">SecNum (ANSSI) • CCNAv7 (en cours) • PowerShell beginner</div>
+            </div>
+        </div>
+
+        <!-- CONTACT & RÉSEAUX -->
+        <h2><i class="fas fa-paper-plane" style="margin-right: 10px; color: #0066cc;"></i> Contacter</h2>
+        
+        <div class="contact-links">
+            <span class="apple-button"><i class="fas fa-file-pdf"></i> Télécharger CV</span>
+            <span class="apple-button apple-button-outline"><i class="fas fa-key"></i> Clé publique</span>
+        </div>
+
+        <div class="social-links">
+            <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="#" class="social-icon" aria-label="Téléphone"><i class="fas fa-phone-alt"></i></a>
+        </div>
+
+        <!-- FOOTER SIMPLE -->
+        <div class="footer">
+            <span>© 2025 Sinani Younes — BTS SIO SISR</span>
+            <span><i class="far fa-clock"></i> Dernière mise à jour : mars 2026</span>
+        </div>
+
+        <!-- NOTE SUR L'EMPLACEMENT PHOTO (supprimable) -->
+        <div style="font-size: 0.85rem; color: #a0a0a6; margin-top: 1.5rem; border-top: 1px dashed #d2d2d7; padding-top: 1rem; text-align: center;">
+            <i class="fas fa-camera"></i> Emplacement photo prêt : remplace l'icône dans la balise <code>.photo-placeholder</code> par une balise <code>&lt;img&gt;</code>.
+        </div>
+    </div>
+
+    <!-- Petit script (optionnel) pour rien, juste pour la forme -->
+    <script>
+        // Rien de nécessaire, mais tu pourras ajouter des interactions plus tard
+        console.log("Portfolio style Apple chargé ✅");
+    </script>
+</body>
+</html>
