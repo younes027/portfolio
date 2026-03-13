@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio BTS SIO SISR - Interface Cyber</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset et base cyber */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #0a0f1e, #010101 90%);
+            color: #e0f2ff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Effet de grille digitale (arrière-plan) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Scanline mouvante */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, transparent, #0ff, #f0f, transparent);
+            filter: blur(3px);
+            animation: scan 8s linear infinite;
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        @keyframes scan {
+            0% { top: -20px; }
+            100% { top: 110%; }
+        }
+
+        /* Conteneur principal avec effet de verre */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            border-radius: 32px;
+            padding: 2rem;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.1);
+        }
+
+        /* Typo cyber */
+        h1, h2, h3 {
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 0 0 10px cyan, 0 0 20px magenta;
+            margin-bottom: 0.2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-left: 6px solid cyan;
+            padding-left: 1rem;
+            margin: 2.5rem 0 1.5rem 0;
+            text-shadow: 0 0 5px magenta;
+            box-shadow: -5px 0 10px rgba(255, 0, 255, 0.3);
+        }
+
+        .subhead {
+            color: #aaf0ff;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .glitch {
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: skew(0deg, 0deg); opacity: 1; }
+            95% { transform: skew(2deg, 1deg); opacity: 0.9; text-shadow: -2px 0 red, 2px 0 blue; }
+            96% { transform: skew(-2deg, -1deg); }
+            97% { transform: skew(0deg, 0deg); }
+        }
+
+        /* Header / Profil */
+        .profile {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            background: rgba(0, 20, 30, 0.5);
+            border-radius: 50px;
+            padding: 1.5rem 2rem;
+            border: 1px solid cyan;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+        }
+
+        .avatar {
+            font-size: 4rem;
+            color: cyan;
+            filter: drop-shadow(0 0 15px magenta);
+        }
+
+        .status-badge {
+            background: #000c14;
+            border: 1px solid #0ff;
+            border-radius: 40px;
+            padding: 0.5rem 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            box-shadow: 0 0 15px cyan;
+        }
+
+        .pulse {
+            width: 12px;
+            height: 12px;
+            background: #0f0;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #0f0;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); background: #ff0; box-shadow: 0 0 20px yellow; }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Cartes compétences / projets */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: rgba(8, 20, 40, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 24px;
+            padding: 1.8rem 1.2rem;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, cyan, magenta, cyan);
+            border-radius: 26px;
+            opacity: 0;
+            transition: 0.4s;
+            z-index: -1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: transparent;
+        }
+
+        .card:hover::before {
+            opacity: 0.8;
+            filter: blur(5px);
+        }
+
+        .card i {
+            font-size: 2.8rem;
+            color: cyan;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px magenta;
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card li {
+            margin: 0.6rem 0;
+            border-bottom: 1px dashed rgba(0, 255, 255, 0.2);
+            padding-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card li i {
+            font-size: 1rem;
+            color: magenta;
+        }
+
+        /* Timeline pour le parcours */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            background: rgba(0, 255, 255, 0.05);
+            padding: 1rem 2rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .timeline-date {
+            min-width: 120px;
+            font-weight: 600;
+            color: magenta;
+            text-shadow: 0 0 5px cyan;
+            font-size: 1.3rem;
+        }
+
+        .timeline-content {
+            font-size: 1.1rem;
+        }
+
+        /* Boutons cyber */
+        .cyber-button {
+            background: transparent;
+            border: 2px solid cyan;
+            color: cyan;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: default;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 1rem;
+            box-shadow: 0 0 15px cyan;
+        }
+
+        .cyber-button i {
+            color: magenta;
+        }
+
+        .cyber-button:hover {
+            background: cyan;
+            color: black;
+            box-shadow: 0 0 40px cyan;
+            border-color: magenta;
+        }
+
+        .cyber-button:hover i {
+            color: black;
+        }
+
+        /* Réseaux sociaux */
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .social-icon {
+            font-size: 2.5rem;
+            color: white;
+            filter: drop-shadow(0 0 10px cyan);
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            color: magenta;
+            filter: drop-shadow(0 0 20px magenta);
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 4rem;
+            text-align: center;
+            border-top: 1px solid cyan;
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            color: #8ae2ff;
+        }
+
+        /* Badges compétences */
+        .skill-tag {
+            display: inline-block;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid magenta;
+            border-radius: 20px;
+            padding: 0.3rem 1rem;
+            margin: 0.2rem;
+            font-size: 0.9rem;
+            backdrop-filter: blur(2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            h1 { font-size: 2.2rem; }
+            .profile { flex-direction: column; text-align: center; }
+            .timeline-item { flex-direction: column; gap: 0.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- SECTION EN-TÊTE PROFIL -->
+        <header>
+            <div class="profile">
+                <div>
+                    <div class="avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <h1 class="glitch">Ethan <span style="color: magenta;">CODE</span></h1>
+                    <div class="subhead">
+                        <i class="fas fa-shield-alt" style="color: cyan;"></i>
+                        <span>Étudiant BTS SIO - SISR</span>
+                        <i class="fas fa-shield-alt" style="color: magenta;"></i>
+                    </div>
+                </div>
+                <div class="status-badge">
+                    <span class="pulse"></span>
+                    <span>En ligne - À la recherche d'une alternance</span>
+                    <i class="fas fa-network-wired" style="color: magenta;"></i>
+                </div>
+            </div>
+
+            <!-- Phrase d'accroche cyber -->
+            <div style="margin: 2rem 0; text-align: center; font-size: 1.4rem; border: 1px dashed magenta; padding: 1rem; border-radius: 60px;">
+                <i class="fas fa-terminal" style="color: cyan;"></i>
+                <span style="font-family: monospace;">>_ Administrer. Sécuriser. Innover.</span>
+                <i class="fas fa-terminal" style="color: magenta;"></i>
+            </div>
+        </header>
+
+        <!-- SECTION À PROPOS / COMPÉTENCES CLÉS -->
+        <section>
+            <h2><i class="fas fa-microchip" style="margin-right: 15px;"></i>  Système & Réseaux</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-server"></i>
+                    <h3>Infrastructure</h3>
+                    <ul>
+                        <li><i class="fas fa-angle-right"></i> Windows Server / Linux (Debian, Ubuntu)</li>
+                        <li><i class="fas fa-angle-right"></i> Active Directory, LDAP</li>
+                        <li><i class="fas fa-angle-right"></i> Virtualisation (VMware, Proxmox)</li>
+                        <li><i class="fas fa-angle-right"></i> NAS / Stockage RAID</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Réseau</h3>
+                    <ul>
+                        <li><i class="fas fa-angle-right"></i> Cisco / Switchs VLAN, STP</li>
+                        <li><i class="fas fa-angle-right"></i> Routage dynamique (OSPF)</li>
+                        <li><i class="fas fa-angle-right"></i> Firewall (pfSense, iptables)</li>
+                        <li><i class="fas fa-angle-right"></i> 802.11 / Wi-Fi sécurisé</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <i class="fas fa-shield-virus"></i>
+                    <h3>Sécurité</h3>
+                    <ul>
+                        <li><i class="fas fa-angle-right"></i> Analyse vulnérabilités</li>
+                        <li><i class="fas fa-angle-right"></i> GPO / durcissement</li>
+                        <li><i class="fas fa-angle-right"></i> VPN (OpenVPN, Wireguard)</li>
+                        <li><i class="fas fa-angle-right"></i> IDS/IPS (Snort)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Cloud / Script</h3>
+                    <ul>
+                        <li><i class="fas fa-angle-right"></i> PowerShell / Bash</li>
+                        <li><i class="fas fa-angle-right"></i> Docker / LXC</li>
+                        <li><i class="fas fa-angle-right"></i> Azure / AWS (fondamentaux)</li>
+                        <li><i class="fas fa-angle-right"></i> Ansible (débutant)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION PROJETS & RÉALISATIONS -->
+        <section>
+            <h2><i class="fas fa-flask" style="margin-right: 15px;"></i>  Projets techniques</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-diagram-project"></i>
+                    <h3>Migration AD 2025</h3>
+                    <p>Migration d’un domaine Windows Server 2012 vers 2022 avec maintien des services DHCP/DNS.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="skill-tag">AD</span>
+                        <span class="skill-tag">DNS</span>
+                        <span class="skill-tag">GPO</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <i class="fas fa-lock"></i>
+                    <h3>VPN Sécurisé</h3>
+                    <p>Mise en place d’un serveur VPN Wireguard + authentification par certificats pour une petite structure.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="skill-tag">Wireguard</span>
+                        <span class="skill-tag">PKI</span>
+                        <span class="skill-tag">Firewall</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Monitoring Automatisé</h3>
+                    <p>Déploiement de Zabbix avec alertes Telegram et graphes personnalisés sur 30 équipements.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="skill-tag">Zabbix</span>
+                        <span class="skill-tag">SNMP</span>
+                        <span class="skill-tag">Script</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARCOURS / TIMELINE -->
+        <section>
+            <h2><i class="fas fa-history" style="margin-right: 15px;"></i>  Connexions temporelles</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - 2026</div>
+                    <div class="timeline-content"><strong>BTS SIO SISR</strong> – Lycée Futurex, mention cyber</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Été 2025</div>
+                    <div class="timeline-content"><strong>Stage technicien réseau</strong> – CyberCorp : assistance N2, configuration switches Cisco</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <div class="timeline-content"><strong>Bac STI2D SIN</strong> – Mention bien, projet de domotique sécurisée</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Certifications</div>
+                    <div class="timeline-content">SecNum (ANSSI) • Cisco CCNAv7 (en cours) • Microsoft AZ-900</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT / RÉSEAUX FICTIFS -->
+        <section style="text-align: center; margin: 3rem 0;">
+            <h2><i class="fas fa-plug" style="margin-right: 10px;"></i>  Connect</h2>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="social-icon"><i class="fas fa-phone-alt"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a>
+            </div>
+            <div style="margin-top: 2rem;">
+                <span class="cyber-button"><i class="fas fa-download"></i> Télécharger CV .pdf</span>
+                <span class="cyber-button" style="margin-left: 1rem;"><i class="fas fa-key"></i> Clé publique PGP</span>
+            </div>
+        </section>
+
+        <!-- FOOTER avec effet compteur -->
+        <footer class="footer">
+            <div>
+                <i class="fas fa-copyright"></i> 2025 Ethan Code — Portfolio BTS SIO SISR 
+                <span style="color: magenta;"> || </span> 
+                <i class="fas fa-eye"></i> <span id="visitor-count">13 37</span> connexions
+            </div>
+            <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">
+                <i class="fas fa-shield-halved"></i> Interface optimisée pour environnement cybernétique
+            </div>
+        </footer>
+    </div>
+
+    <!-- Petit script pour faire clignoter le compteur (simulé) -->
+    <script>
+        // juste un petit effet amusant pour le compteur "connexions"
+        setInterval(() => {
+            const compteur = document.getElementById('visitor-count');
+            if (compteur) {
+                // change rapidement entre deux valeurs pour un effet "live"
+                if (compteur.innerText === '13 37') {
+                    compteur.innerText = '13 38';
+                } else {
+                    compteur.innerText = '13 37';
+                }
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
