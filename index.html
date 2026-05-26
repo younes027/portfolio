@@ -1,480 +1,56 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sinani Younes — Portfolio BTS SIO SISR</title>
-    <!-- Style Apple / épuré / moderne -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- SF Pro / Inter comme Apple -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons (version gratuite) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* RESET & GLOBAL */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f5f5f7; /* fond gris clair Apple */
-            color: #1d1d1f;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            padding: 2rem 1.5rem;
-        }
-
-        /* CONTENEUR PRINCIPAL À L'APPLE (max-width élégant) */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            border-radius: 2.5rem;
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08), 0 8px 20px rgba(0,0,0,0.02);
-            padding: 2.5rem 2.8rem;
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(255,255,255,0.7);
-        }
-
-        /* TYPO GRANDE ET AÉRÉE */
-        h1 {
-            font-size: 3rem;
-            font-weight: 600;
-            letter-spacing: -0.015em;
-            margin-bottom: 0.25rem;
-            color: #000;
-        }
-
-        h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            margin: 2.5rem 0 1.25rem 0;
-            color: #1d1d1f;
-            border-bottom: 2px solid #e6e6e8;
-            padding-bottom: 0.4rem;
-        }
-
-        h3 {
-            font-size: 1.4rem;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            margin-bottom: 0.8rem;
-            color: #1d1d1f;
-        }
-
-        .subhead {
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: #6e6e73;
-            margin-bottom: 1.8rem;
-        }
-
-        /* PHOTO / AVATAR AVEC EMPLACEMENT */
-        .photo-profile {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin: 1.8rem 0 2.2rem 0;
-        }
-
-        .photo-placeholder {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            background: linear-gradient(145deg, #e8e8ed, #d1d1d6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #8e8e93;
-            font-size: 3.5rem;
-            border: 3px solid white;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-            transition: 0.2s ease;
-        }
-
-        .photo-placeholder i {
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-        }
-
-        /* pour quand la photo réelle sera ajoutée */
-        .photo-placeholder img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        /* BADGES/STATUT */
-        .badge {
-            background-color: #f5f5f7;
-            border-radius: 40px;
-            padding: 0.6rem 1.5rem;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #1d1d1f;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            border: 1px solid #e6e6e8;
-            box-shadow: inset 0 1px 2px white;
-        }
-
-        .badge i {
-            color: #0066cc; /* bleu Apple */
-        }
-
-        /* GRILLE POUR COMPÉTENCES / PROJETS (CARTES APPLE) */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.8rem;
-            margin: 2rem 0 0.5rem 0;
-        }
-
-        .card {
-            background: #ffffff;
-            border-radius: 1.8rem;
-            padding: 1.8rem 1.6rem;
-            border: 1px solid #f0f0f2;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.02);
-            transition: all 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 28px -10px rgba(0,0,0,0.1);
-            border-color: #d0d0d5;
-        }
-
-        .card i {
-            font-size: 2.2rem;
-            color: #0066cc;
-            margin-bottom: 1rem;
-        }
-
-        .card p {
-            color: #3a3a3c;
-            font-size: 1rem;
-        }
-
-        .card ul {
-            list-style: none;
-        }
-
-        .card li {
-            margin: 0.8rem 0;
-            color: #515154;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .card li i {
-            font-size: 0.9rem;
-            color: #0066cc;
-            margin: 0;
-        }
-
-        /* LISTE DE COMPÉTENCES (tags) */
-        .skills-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin: 1.2rem 0 0.4rem 0;
-        }
-
-        .skill-tag {
-            background: #f5f5f7;
-            border-radius: 30px;
-            padding: 0.3rem 1.2rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #1d1d1f;
-            border: 0.5px solid #e6e6e8;
-        }
-
-        /* TIMELINE APPLE (parcours) */
-        .timeline {
-            margin: 2rem 0;
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 1.8rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid #eeeef0;
-        }
-
-        .timeline-date {
-            min-width: 110px;
-            font-weight: 600;
-            color: #0066cc;
-            font-size: 1.1rem;
-        }
-
-        .timeline-content {
-            font-weight: 400;
-            color: #2c2c2e;
-        }
-
-        .timeline-content strong {
-            font-weight: 600;
-            color: #000;
-        }
-
-        /* CONTACT & BOUTONS APPLE */
-        .contact-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-            margin: 2.5rem 0 1rem 0;
-            align-items: center;
-        }
-
-        .apple-button {
-            background: #0066cc;
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 60px;
-            font-weight: 500;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            text-decoration: none;
-            transition: 0.15s ease;
-            border: 1px solid #0066cc;
-        }
-
-        .apple-button i {
-            color: white;
-        }
-
-        .apple-button:hover {
-            background: #0055b3;
-            cursor: pointer;
-        }
-
-        .apple-button-outline {
-            background: transparent;
-            color: #0066cc;
-            border: 1px solid #d0d0d5;
-            box-shadow: none;
-        }
-
-        .apple-button-outline i {
-            color: #0066cc;
-        }
-
-        .apple-button-outline:hover {
-            background: #f5f5f7;
-            border-color: #0066cc;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.8rem;
-            margin: 1.8rem 0;
-        }
-
-        .social-icon {
-            color: #8e8e93;
-            font-size: 1.8rem;
-            transition: 0.2s;
-        }
-
-        .social-icon:hover {
-            color: #0066cc;
-            transform: scale(1.05);
-        }
-
-        /* FOOTER */
-        .footer {
-            margin-top: 4rem;
-            padding-top: 1.8rem;
-            border-top: 1px solid #f0f0f2;
-            font-size: 0.95rem;
-            color: #8e8e93;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 680px) {
-            body { padding: 1rem; }
-            .container { padding: 1.8rem; }
-            h1 { font-size: 2.4rem; }
-            .photo-profile { flex-direction: column; align-items: flex-start; }
-            .timeline-item { flex-direction: column; gap: 0.3rem; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio BTS SIO SISR | Younes Sinani</title>
+  <meta name="description" content="Portfolio BTS SIO SISR de Younes Sinani - Épreuve E5 et E6, projets StadiumCompany, compétences systèmes et réseaux." />
+  <style>
+    :root{
+      --bg:#f5f7fb; --card:#ffffff; --ink:#14213d; --text:#2b3245; --muted:#6b7280;
+      --blue:#2563eb; --blue2:#1e40af; --line:#e5e7eb; --soft:#eef4ff; --dark:#0f172a;
+      --shadow:0 16px 40px rgba(15,23,42,.08); --radius:22px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth}
+    body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+    a{color:inherit;text-decoration:none}.container{width:min(1160px,92%);margin:auto}.section{padding:86px 0}.section-title{font-size:clamp(2rem,4vw,3rem);color:var(--ink);margin-bottom:14px}.section-lead{color:var(--muted);max-width:780px;margin-bottom:34px}.badge{display:inline-flex;align-items:center;gap:8px;background:var(--soft);color:var(--blue2);border:1px solid #dbeafe;border-radius:999px;padding:7px 12px;font-size:.86rem;font-weight:700}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:12px 18px;font-weight:800;border:1px solid var(--line);background:#fff;transition:.2s}.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(37,99,235,.13)}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.84);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}.brand{font-weight:900;color:var(--ink);letter-spacing:-.03em}.brand span{color:var(--blue)}.menu{display:flex;gap:18px;align-items:center;font-size:.94rem;color:#475569}.menu a:hover{color:var(--blue)}
+    .hero{padding:84px 0 58px;background:linear-gradient(135deg,#fff 0%,#eef4ff 54%,#f8fafc 100%);border-bottom:1px solid var(--line)}.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:48px;align-items:center}.hero h1{font-size:clamp(2.35rem,5.5vw,5rem);line-height:1.02;color:var(--ink);letter-spacing:-.06em;margin:16px 0}.hero h1 span{color:var(--blue)}.hero p{font-size:1.08rem;color:#475569;max-width:720px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.hero-card{background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:24px}.portrait{width:100%;aspect-ratio:4/5;border-radius:24px;object-fit:cover;object-position:center top;display:block}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.quick div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;text-align:center}.quick strong{display:block;color:var(--ink)}.quick small{color:var(--muted)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px}.card h3{color:var(--ink);margin-bottom:10px;font-size:1.18rem}.card p,.card li{color:#4b5563}.list{padding-left:18px}.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.tag{background:#f8fafc;border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:.83rem;color:#334155;font-weight:700}
+    .timeline{border-left:3px solid #dbeafe;padding-left:22px}.time-item{margin-bottom:22px}.time-item h3{color:var(--ink)}.time-item span{color:var(--blue);font-weight:800;font-size:.92rem}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.project{position:relative;overflow:hidden}.project:before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--blue),#60a5fa)}.project .num{font-weight:900;color:#cbd5e1;font-size:2rem;line-height:1}.project h3{margin-top:10px}.project .meta{color:var(--blue);font-weight:800;font-size:.9rem;margin-bottom:8px}.project-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.small-btn{font-size:.88rem;padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:800}.small-btn:hover{border-color:var(--blue);color:var(--blue)}
+    .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.skill{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}.skill h3{color:var(--ink);margin-bottom:8px}.skill ul{padding-left:18px;color:#475569;font-size:.95rem}
+    .synthesis{background:var(--dark);color:white;border-radius:30px;padding:36px;box-shadow:var(--shadow)}.synthesis h3{font-size:1.7rem;margin-bottom:8px}.synthesis p{color:#cbd5e1}.synthesis .btn{margin-top:18px;background:white;color:var(--dark)}
+    footer{padding:36px 0;background:#0f172a;color:#cbd5e1;text-align:center}.contact-links{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+    @media(max-width:900px){.hero-grid,.grid-2,.projects{grid-template-columns:1fr}.grid-3,.skills{grid-template-columns:1fr 1fr}.menu{display:none}.quick{grid-template-columns:1fr}}
+    @media(max-width:560px){.grid-3,.skills{grid-template-columns:1fr}.section{padding:58px 0}.hero{padding-top:54px}.card{padding:20px}}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- EN-TÊTE AVEC EMPLACEMENT PHOTO -->
-        <div class="photo-profile">
-            <div class="photo-placeholder" id="photoContainer">
-                <!-- Ici, tu pourras ajouter ta photo en remplaçant l'icône par une balise <img> -->
-                <i class="fas fa-user-circle"></i>
-                <!-- Exemple quand tu auras la photo : <img src="lien_vers_ta_photo.jpg" alt="Sinani Younes"> -->
-            </div>
-            <div>
-                <h1>Sinani Younes</h1>
-                <div class="subhead">
-                    <i class="fas fa-shield-halved" style="margin-right: 8px; color: #0066cc;"></i>
-                    Étudiant BTS SIO — Option SISR
-                </div>
-                <div class="badge">
-                    <i class="fas fa-circle" style="font-size: 0.6rem; color: #30b0c0;"></i> 
-                    En recherche d'alternance
-                </div>
-            </div>
-        </div>
-
-        <!-- PETITE BIO STYLE APPLE -->
-        <p style="font-size: 1.2rem; max-width: 700px; margin: 2rem 0 1rem 0; color: #3a3a3c;">
-            Passionné par l’infrastructure, l’administration système et la cybersécurité. 
-            Je prépare un BTS SIO SISR pour devenir administrateur réseau.
-        </p>
-
-        <!-- SECTION COMPÉTENCES (reprise de ton site) -->
-        <h2><i class="fas fa-gear" style="font-size: 1.8rem; margin-right: 12px; color: #0066cc;"></i> Compétences techniques</h2>
-        
-        <div class="grid">
-            <!-- SYSTÈMES -->
-            <div class="card">
-                <i class="fas fa-server"></i>
-                <h3>🖥️ Systèmes</h3>
-                <ul>
-                    <li><i class="fas fa-angle-right"></i> Windows Server (AD, GPO)</li>
-                    <li><i class="fas fa-angle-right"></i> Linux (Debian, Ubuntu)</li>
-                    <li><i class="fas fa-angle-right"></i> Scripting Bash / PowerShell</li>
-                    <li><i class="fas fa-angle-right"></i> Virtualisation (VMware, Proxmox)</li>
-                </ul>
-            </div>
-
-            <!-- RÉSEAUX -->
-            <div class="card">
-                <i class="fas fa-network-wired"></i>
-                <h3>🌐 Réseaux</h3>
-                <ul>
-                    <li><i class="fas fa-angle-right"></i> Cisco (VLAN, routage)</li>
-                    <li><i class="fas fa-angle-right"></i> Adressage IP / DHCP / DNS</li>
-                    <li><i class="fas fa-angle-right"></i> Supervision (Zabbix, Cacti)</li>
-                    <li><i class="fas fa-angle-right"></i> 802.1Q, STP, OSPF (bases)</li>
-                </ul>
-            </div>
-
-            <!-- SÉCURITÉ & CLOUD -->
-            <div class="card">
-                <i class="fas fa-lock"></i>
-                <h3>🔒 Sécurité & Cloud</h3>
-                <ul>
-                    <li><i class="fas fa-angle-right"></i> Firewall (pfSense, iptables)</li>
-                    <li><i class="fas fa-angle-right"></i> VPN (OpenVPN, Wireguard)</li>
-                    <li><i class="fas fa-angle-right"></i> Sauvegardes (Veeam)</li>
-                    <li><i class="fas fa-angle-right"></i> Azure / notions cloud</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- PROJETS RÉCENTS (repris et améliorés) -->
-        <h2><i class="fas fa-wrench" style="margin-right: 10px; color: #0066cc;"></i> Projets récents</h2>
-
-        <div class="grid">
-            <div class="card">
-                <i class="fas fa-shield-halved"></i>
-                <h3>Réseau sécurisé pfSense</h3>
-                <p>Mise en place d'un firewall pfSense avec segmentation VLAN, règle de filtrage et VPN site-à-site. Supervision via pfSense logs.</p>
-                <div class="skills-tags">
-                    <span class="skill-tag">pfSense</span>
-                    <span class="skill-tag">VLAN</span>
-                    <span class="skill-tag">OpenVPN</span>
-                </div>
-            </div>
-            <div class="card">
-                <i class="fas fa-database"></i>
-                <h3>Serveur Web & Base de données</h3>
-                <p>Déploiement d’un serveur LAMP (Linux, Apache, MySQL, PHP) avec sauvegardes automatisées et durcissement SSH.</p>
-                <div class="skills-tags">
-                    <span class="skill-tag">Linux</span>
-                    <span class="skill-tag">Apache</span>
-                    <span class="skill-tag">MySQL</span>
-                </div>
-            </div>
-            <div class="card">
-                <i class="fas fa-diagram-project"></i>
-                <h3>Active Directory & GPO</h3>
-                <p>Installation d’un domaine Windows Server, gestion des utilisateurs, stratégies de groupe et partage de fichiers sécurisé.</p>
-                <div class="skills-tags">
-                    <span class="skill-tag">AD DS</span>
-                    <span class="skill-tag">GPO</span>
-                    <span class="skill-tag">DNS</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- PARCOURS (TIMELINE) -->
-        <h2><i class="fas fa-timeline" style="margin-right: 10px; color: #0066cc;"></i> Parcours</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">2024-2026</div>
-                <div class="timeline-content"><strong>BTS SIO SISR</strong> — Lycée polyvalent, option infrastructure</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">Été 2025</div>
-                <div class="timeline-content"><strong>Stage technicien support</strong> — Maintenance réseau et assistance utilisateurs</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2023-2024</div>
-                <div class="timeline-content"><strong>Bac STI2D</strong> — Mention bien, spécialité SIN</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">Certifications</div>
-                <div class="timeline-content">SecNum (ANSSI) • CCNAv7 (en cours) • PowerShell beginner</div>
-            </div>
-        </div>
-
-        <!-- CONTACT & RÉSEAUX -->
-        <h2><i class="fas fa-paper-plane" style="margin-right: 10px; color: #0066cc;"></i> Contacter</h2>
-        
-        <div class="contact-links">
-            <span class="apple-button"><i class="fas fa-file-pdf"></i> Télécharger CV</span>
-            <span class="apple-button apple-button-outline"><i class="fas fa-key"></i> Clé publique</span>
-        </div>
-
-        <div class="social-links">
-            <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            <a href="#" class="social-icon" aria-label="Téléphone"><i class="fas fa-phone-alt"></i></a>
-        </div>
-
-        <!-- FOOTER SIMPLE -->
-        <div class="footer">
-            <span>© 2025 Sinani Younes — BTS SIO SISR</span>
-            <span><i class="far fa-clock"></i> Dernière mise à jour : mars 2026</span>
-        </div>
-
-        <!-- NOTE SUR L'EMPLACEMENT PHOTO (supprimable) -->
-        <div style="font-size: 0.85rem; color: #a0a0a6; margin-top: 1.5rem; border-top: 1px dashed #d2d2d7; padding-top: 1rem; text-align: center;">
-            <i class="fas fa-camera"></i> Emplacement photo prêt : remplace l'icône dans la balise <code>.photo-placeholder</code> par une balise <code>&lt;img&gt;</code>.
-        </div>
-    </div>
-
-    <!-- Petit script (optionnel) pour rien, juste pour la forme -->
-    <script>
-        // Rien de nécessaire, mais tu pourras ajouter des interactions plus tard
-        console.log("Portfolio style Apple chargé ✅");
-    </script>
+  <header><div class="container nav"><a class="brand" href="#accueil">Younes <span>Sinani</span></a><nav class="menu"><a href="#presentation">Présentation</a><a href="#competences">Compétences</a><a href="#e5">E5</a><a href="#e6">E6</a><a href="#synthese">Synthèse</a><a href="#contact">Contact</a></nav></div></header>
+  <main>
+    <section id="accueil" class="hero"><div class="container hero-grid"><div><span class="badge">BTS SIO option SISR • Portfolio E5/E6</span><h1>Portfolio systèmes, réseaux & <span>cybersécurité</span></h1><p>Étudiant en BTS Services Informatiques aux Organisations option SISR à l’École Supérieure d’Informatique IRIS Paris 17. Ce portfolio présente mes compétences, mes stages et mes réalisations professionnelles autour de l’administration systèmes et réseaux.</p><div class="hero-actions"><a class="btn primary" href="#e5">Voir mes réalisations E5</a><a class="btn" href="documents/tableau-synthese.pdf" target="_blank">Tableau de synthèse</a><a class="btn" href="documents/cv-younes-sinani.pdf" target="_blank">Télécharger mon CV</a></div></div><div class="hero-card"><img class="portrait" src="assets/younes-photo.png" alt="Photo de Younes Sinani"><div class="quick"><div><strong>SISR</strong><small>Option BTS</small></div><div><strong>2024-2026</strong><small>Formation</small></div><div><strong>Saint-Gratien</strong><small>Localisation</small></div></div></div></div></section>
+    <section id="presentation" class="section"><div class="container grid-2"><div><h2 class="section-title">À propos</h2><p class="section-lead">Je développe mes compétences dans l’administration de serveurs, la configuration réseau, la gestion d’utilisateurs, le support informatique et la sécurisation d’infrastructures.</p><div class="card"><h3>Objectif professionnel</h3><p>Mon objectif est de poursuivre vers l’administration systèmes et réseaux, avec une spécialisation progressive en cybersécurité. Je souhaite renforcer mes compétences techniques en environnement professionnel, notamment sur l’administration réseau, le support utilisateurs, la gestion d’infrastructure et la sécurité des systèmes d’information.</p></div></div><div class="card"><h3>Formation</h3><div class="timeline"><div class="time-item"><span>2024 - 2026</span><h3>BTS SIO option SISR</h3><p>École Supérieure d’Informatique IRIS Paris 17</p></div><div class="time-item"><span>2024</span><h3>Baccalauréat général</h3><p>Spécialités Mathématiques et SVT</p></div></div></div></div></section>
+    <section id="competences" class="section"><div class="container"><h2 class="section-title">Compétences techniques</h2><p class="section-lead">Compétences travaillées pendant la formation, les ateliers professionnels, les stages et les projets personnels.</p><div class="skills"><div class="skill"><h3>Systèmes</h3><ul><li>Windows Server 2019/2022</li><li>Windows 10/11</li><li>Ubuntu / Debian</li><li>VirtualBox / VMware</li></ul></div><div class="skill"><h3>Réseau</h3><ul><li>VLAN, trunks, routage</li><li>DHCP, DNS, NAT</li><li>HSRP, EtherChannel</li><li>Cisco Packet Tracer</li></ul></div><div class="skill"><h3>Administration</h3><ul><li>Active Directory</li><li>Utilisateurs, groupes, UO</li><li>GPO</li><li>Profils et partages</li></ul></div><div class="skill"><h3>Sécurité & services</h3><ul><li>pfSense, DMZ, ACL</li><li>SSH, VPN, RADIUS</li><li>GLPI, Nagios, Zimbra</li><li>Sauvegarde UrBackup</li></ul></div></div></div></section>
+    <section id="experiences" class="section"><div class="container"><h2 class="section-title">Expériences</h2><div class="grid-3"><div class="card"><h3>Assistant IT & Technicien Support</h3><p><strong>Strate, École de Design</strong> — 2025</p><p>Déploiement de postes, clonage SSD, maintenance matérielle, découverte Active Directory, intégration de machines au domaine et support utilisateur.</p></div><div class="card"><h3>Sinani Consulting</h3><p><strong>Stage informatique</strong> — 2025</p><p>Participation à des missions de support, suivi d’incidents, assistance utilisateur et découverte d’un environnement professionnel orienté services.</p></div><div class="card"><h3>Lab personnel</h3><p><strong>Projets systèmes & réseaux</strong></p><p>Virtualisation, tests Windows Server, Active Directory, GPO, adressage IP, DNS/DHCP, clonage et restauration système.</p></div></div></div></section>
+    <section id="contexte" class="section"><div class="container grid-2"><div><h2 class="section-title">Contexte StadiumCompany</h2><p class="section-lead">StadiumCompany gère un grand stade et souhaite moderniser son infrastructure afin d’améliorer la satisfaction client, supporter de nouveaux usages et sécuriser ses services.</p><div class="tags"><span class="tag">Stade</span><span class="tag">Billetterie</span><span class="tag">Magasin</span><span class="tag">Réseau multi-sites</span><span class="tag">Sécurité</span></div></div><div class="card"><h3>Besoin principal</h3><p>L’entreprise doit moderniser son réseau, segmenter les services, sécuriser les interconnexions, mettre en place des services d’infrastructure et assurer la continuité de service.</p><div class="project-actions"><a class="small-btn" href="documents/contexte-stadium-company.pdf" target="_blank">Voir le contexte</a></div></div></div></section>
+    <section id="e5" class="section"><div class="container"><h2 class="section-title">Épreuve E5 — Réalisations StadiumCompany</h2><p class="section-lead">Les 10 missions présentées ci-dessous couvrent les compétences liées au support, à la mise à disposition de services informatiques et à l’administration d’une infrastructure SISR.</p><div class="projects">
+      <article class="card project"><div class="num">01</div><p class="meta">Réseau • VLAN • Routage</p><h3>Restructuration de l’infrastructure réseau</h3><p>Mise en place d’une segmentation réseau pour StadiumCompany avec VLAN, ports access/trunk, routage inter-VLAN et routage statique.</p><div class="tags"><span class="tag">VLAN</span><span class="tag">Cisco</span><span class="tag">Routage</span></div><div class="project-actions"><a class="small-btn" href="documents/mission-1.pdf" target="_blank">Documentation</a></div></article>
+      <article class="card project"><div class="num">02</div><p class="meta">Systèmes • Windows Server</p><h3>Administration des services informatiques</h3><p>Installation et configuration des services Active Directory, DHCP, DNS, gestion des utilisateurs, groupes, UO et stratégies de sécurité.</p><div class="tags"><span class="tag">AD DS</span><span class="tag">DNS</span><span class="tag">DHCP</span><span class="tag">GPO</span></div><div class="project-actions"><a class="small-btn" href="documents/mission-2.pdf" target="_blank">Documentation</a></div></article>
+      <article class="card project"><div class="num">03</div><p class="meta">Sécurité • Interconnexions</p><h3>Administration à distance sécurisée</h3><p>Sécurisation des accès administrateurs et des interconnexions entre sites avec SSH, VPN, NAT, ACL et bonnes pratiques d’accès distant.</p><div class="tags"><span class="tag">SSH</span><span class="tag">VPN</span><span class="tag">ACL</span><span class="tag">NAT</span></div><div class="project-actions"><a class="small-btn" href="documents/mission-3.pdf" target="_blank">Documentation</a></div></article>
+      <article class="card project"><div class="num">04</div><p class="meta">Haute disponibilité</p><h3>Redondance et tolérance de panne</h3><p>Configuration de mécanismes de haute disponibilité avec HSRP pour la passerelle et EtherChannel pour la redondance des liens inter-switch.</p><div class="tags"><span class="tag">HSRP</span><span class="tag">EtherChannel</span><span class="tag">Failover</span></div><div class="project-actions"><a class="small-btn" href="documents/mission-4.pdf" target="_blank">Documentation</a></div></article>
+      <article class="card project"><div class="num">05</div><p class="meta">Pare-feu • DMZ</p><h3>Sécurisation de l’accès Internet</h3><p>Déploiement de pfSense, segmentation en zones de sécurité, création d’une DMZ et mise en place de règles de filtrage pour protéger le SI.</p><div class="tags"><span class="tag">pfSense</span><span class="tag">DMZ</span><span class="tag">Firewall</span></div><div class="project-actions"><a class="small-btn" href="documents/mission-5.pdf" target="_blank">Documentation</a></div></article>
+      <article class="card project"><div class="num">06</div><p class="meta">Wi-Fi • Authentification</p><h3>Authentification RADIUS</h3><p>Mise en place d’une authentification centralisée pour le Wi-Fi entreprise avec NPS/RADIUS, AD CS, certificats et WPA2-Enterprise.</p><div class="tags"><span class="tag">RADIUS</span><span class="tag">NPS</span><span class="tag">802.1X</span><span class="tag">Wi-Fi</span></div><div class="project-actions"><a class="small-btn" href="documents/mission-6.pdf" target="_blank">Documentation</a></div></article>
+      <article class="card project"><div class="num">07</div><p class="meta">ITSM • Gestion de parc</p><h3>GLPI Helpdesk et inventaire</h3><p>Installation de GLPI, préparation LAMP, base MariaDB, intégration LDAP/AD, inventaire automatisé et gestion des tickets utilisateurs.</p><div class="tags"><span class="tag">GLPI</span><span class="tag">Helpdesk</span><span class="tag">LDAP</span><span class="tag">Inventaire</span></div><div class="project-actions"><a class="small-btn" href="documents/mission-7.pdf" target="_blank">Documentation</a></div></article>
+      <article class="card project"><div class="num">08</div><p class="meta">Supervision</p><h3>Nagios Core sous Ubuntu Server</h3><p>Déploiement d’une solution de supervision pour surveiller les hôtes et services, détecter les incidents et améliorer la disponibilité.</p><div class="tags"><span class="tag">Nagios</span><span class="tag">Ubuntu</span><span class="tag">Monitoring</span></div><div class="project-actions"><a class="small-btn" href="documents/mission-8.pdf" target="_blank">Documentation</a></div></article>
+      <article class="card project"><div class="num">09</div><p class="meta">Messagerie collaborative</p><h3>Zimbra Collaboration Suite</h3><p>Installation d’une messagerie collaborative Zimbra, configuration DNS, intégration Active Directory, validation des flux mail et liaison GLPI.</p><div class="tags"><span class="tag">Zimbra</span><span class="tag">DNS</span><span class="tag">AD</span><span class="tag">Mail</span></div><div class="project-actions"><a class="small-btn" href="documents/mission-9.pdf" target="_blank">Documentation</a></div></article>
+      <article class="card project"><div class="num">10</div><p class="meta">Sauvegarde</p><h3>Sauvegarde centralisée UrBackup</h3><p>Mise en place d’un serveur de sauvegarde sous Ubuntu avec client Windows, stockage dédié, sauvegarde, suppression puis restauration d’un fichier.</p><div class="tags"><span class="tag">UrBackup</span><span class="tag">Ubuntu</span><span class="tag">Windows</span><span class="tag">Restauration</span></div><div class="project-actions"><a class="small-btn" href="documents/mission-10.pdf" target="_blank">Documentation</a></div></article>
+    </div></div></section>
+    <section id="e6" class="section"><div class="container"><h2 class="section-title">Épreuve E6 — Réalisations professionnelles</h2><p class="section-lead">Deux situations professionnelles sont présentées pour l’épreuve E6 Administration des systèmes et des réseaux option SISR.</p><div class="grid-2"><div class="card"><h3>Réalisation 1 — Zone d’échange Logistique</h3><p>Mise en place d’un accès Wi-Fi isolé et sécurisé pour les fournisseurs, avec accès limité au lecteur réseau d’échange sans accès au reste du système d’information.</p><div class="tags"><span class="tag">Wi-Fi isolé</span><span class="tag">Sécurité</span><span class="tag">Accès contrôlé</span></div><div class="project-actions"><a class="small-btn" href="documents/e6-realisation-1.pdf" target="_blank">Fiche E6 RP1</a></div></div><div class="card"><h3>Réalisation 2 — Suivi, Inventaire et Coordination</h3><p>Suivi des douchettes de scan, inventaire, coordination via agenda partagé et gestion des incidents matériels via GLPI.</p><div class="tags"><span class="tag">GLPI</span><span class="tag">Inventaire</span><span class="tag">Coordination</span></div><div class="project-actions"><a class="small-btn" href="documents/e6-realisation-2.pdf" target="_blank">Fiche E6 RP2</a></div></div></div></div></section>
+    <section id="synthese" class="section"><div class="container"><div class="synthesis"><span class="badge">Document officiel BTS SIO</span><h3>Tableau de synthèse des réalisations professionnelles</h3><p>Le tableau de synthèse regroupe les réalisations de formation et de milieu professionnel, ainsi que les compétences mobilisées : gérer le patrimoine informatique, répondre aux incidents, travailler en mode projet, mettre à disposition un service et organiser son développement professionnel.</p><a class="btn" href="documents/tableau-synthese.pdf" target="_blank">Ouvrir le tableau de synthèse</a></div></div></section>
+    <section id="contact" class="section"><div class="container"><h2 class="section-title">Contact</h2><p class="section-lead">Disponible pour une poursuite d’études en administration systèmes, réseaux et cybersécurité.</p><div class="contact-links"><a class="btn primary" href="mailto:sinani.younespro@gmail.com">sinani.younespro@gmail.com</a><a class="btn" href="https://www.linkedin.com/in/younes-sinani-bb004a374" target="_blank">LinkedIn</a><a class="btn" href="documents/cv-younes-sinani.pdf" target="_blank">CV</a></div></div></section>
+  </main>
+  <footer><div class="container"><p>© 2026 Younes Sinani — Portfolio BTS SIO SISR</p></div></footer>
 </body>
 </html>
